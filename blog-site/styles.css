@@ -1,0 +1,289 @@
+:root {
+  --bg: #f7f3ea;
+  --ink: #1f2a2f;
+  --muted: #53636d;
+  --paper: rgba(255, 255, 255, 0.76);
+  --line: rgba(31, 42, 47, 0.15);
+  --accent: #0d6a6a;
+  --accent-soft: #d8ece6;
+  --shadow: 0 14px 36px rgba(23, 35, 38, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Noto Serif SC", serif;
+  background: radial-gradient(circle at 12% 10%, #ebe7d8 0, transparent 42%),
+              radial-gradient(circle at 88% 12%, #dce8ea 0, transparent 38%),
+              var(--bg);
+  min-height: 100vh;
+}
+
+.bg-shape {
+  position: fixed;
+  z-index: -1;
+  border-radius: 999px;
+  filter: blur(1px);
+}
+
+.bg-shape-a {
+  width: 260px;
+  height: 260px;
+  background: rgba(13, 106, 106, 0.1);
+  top: 18%;
+  left: -68px;
+}
+
+.bg-shape-b {
+  width: 320px;
+  height: 320px;
+  background: rgba(160, 125, 70, 0.11);
+  right: -80px;
+  bottom: 14%;
+}
+
+.topbar {
+  width: min(980px, calc(100vw - 32px));
+  margin: 16px auto 0;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.96rem;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+.container {
+  width: min(980px, calc(100vw - 32px));
+  margin: 24px auto 48px;
+  display: grid;
+  gap: 18px;
+}
+
+.hero,
+.card,
+.article {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--paper);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  padding: 30px 26px;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+h1 {
+  margin: 10px 0 12px;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: 1.28rem;
+}
+
+.hero p,
+.card p,
+.article p,
+.article li {
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.card {
+  padding: 24px 22px;
+}
+
+.post-card {
+  display: grid;
+  gap: 10px;
+}
+
+.post-tag {
+  color: var(--accent);
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(100deg, #0d6a6a, #145090);
+}
+
+pre {
+  margin: 0;
+  overflow-x: auto;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #f0ece3;
+}
+
+code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+}
+
+.article {
+  padding: 28px 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.article h1 {
+  margin: 0;
+}
+
+.article h3 {
+  margin: 4px 0 0;
+  font-size: 1.08rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.meta-item {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.meta-item:nth-child(2n) {
+  border-right: 0;
+}
+
+.meta-item:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.84rem;
+  color: #6d7d86;
+  margin-bottom: 4px;
+}
+
+.article ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.55s ease-out forwards;
+}
+
+.fade-up:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.fade-up:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.fade-up:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .container {
+    margin-top: 16px;
+  }
+
+  .hero,
+  .card,
+  .article {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .meta-item {
+    border-right: 0;
+  }
+
+  .meta-item:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .meta-item:last-child {
+    border-bottom: 0;
+  }
+}

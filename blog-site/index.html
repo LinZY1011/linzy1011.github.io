@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>云上个人博客 | 林子逸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="bg-shape bg-shape-a"></div>
+  <div class="bg-shape bg-shape-b"></div>
+
+  <header class="topbar fade-up">
+    <p class="brand">Cloud Notes</p>
+    <nav>
+      <a href="./index.html">首页</a>
+      <a href="./posts/lab2-report.html">实验二报告</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero fade-up">
+      <p class="kicker">山东大学 · 云计算技术</p>
+      <h1>个人博客 / 网站搭建实验</h1>
+      <p>
+        本站作为实验二交付成果，采用静态页面实现博客发布。实验报告已经整理为独立博文，
+        可直接在线阅读。
+      </p>
+    </section>
+
+    <section class="card fade-up">
+      <h2>最新博文</h2>
+      <article class="post-card">
+        <p class="post-tag">课程实验</p>
+        <h3>实验二：利用云平台搭建个人博客</h3>
+        <p class="post-meta">发布时间：2026-03-26 · 作者：林子逸</p>
+        <p>
+          记录环境构建、网站搭建、报告撰写与发布全流程，包括本地运行命令和云服务器部署配置。
+        </p>
+        <a class="button" href="./posts/lab2-report.html">阅读全文</a>
+      </article>
+    </section>
+
+    <section class="card fade-up">
+      <h2>本地访问</h2>
+      <pre><code>cd blog-site
+python -m http.server 8080</code></pre>
+      <p>启动后访问 <code>http://localhost:8080</code>。</p>
+    </section>
+  </main>
+</body>
+</html>
