@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="实验二报告：基于 GitHub Pages 搭建个人博客并将实验报告发布为博文。">
+  <meta name="description" content="实验二报告：基于 GitHub Pages 搭建个人博客并发布实验报告。">
   <meta name="theme-color" content="#163b47">
   <title>实验二报告 | 基于 GitHub Pages 的个人博客搭建</title>
   <link rel="stylesheet" href="../styles.css">
@@ -29,8 +29,8 @@
           <p class="eyebrow">课程实验报告</p>
           <h1>实验二：基于 GitHub Pages 的个人博客搭建与报告发布</h1>
           <p class="article-lead">
-            本实验以 <code>linzy1011.github.io</code> 仓库为载体，完成个人博客首页搭建、实验报告博文化发布、
-            本地预览验证以及 GitHub Pages 部署准备，最终形成一个可持续扩展的静态博客站点。
+            本实验使用 <code>linzy1011.github.io</code> 仓库搭建一个简洁的个人博客，
+            并把实验报告整理成站点中的一篇文章进行发布。
           </p>
         </header>
 
@@ -56,124 +56,64 @@
         <section class="section-block">
           <h2>一、实验目标</h2>
           <p>
-            本实验的目标是构建一个可公开访问的个人博客或个人网站，并将实验报告本身作为一篇博文发布到站点中。
-            为了降低部署复杂度、提高复现性，本次采用 GitHub Pages 提供的静态托管能力，
-            将站点直接部署到与用户名同名的主页仓库中。
+            完成个人博客主页的搭建，并将实验报告作为一篇博文发布到站点中。
+            本次选择 GitHub Pages 作为托管平台，原因是部署简单、适合静态页面，也方便课程实验快速完成。
           </p>
         </section>
 
         <section class="section-block">
           <h2>二、环境构建</h2>
-          <p>本地开发环境基于 Windows，实际检查到的工具版本如下：</p>
+          <p>本地开发环境基于 Windows，使用到的核心工具如下：</p>
           <ul class="feature-list">
             <li>Git：<code>2.44.0.windows.1</code></li>
             <li>Python：<code>3.12.4</code></li>
             <li>Node.js：<code>v20.11.1</code></li>
           </ul>
           <p>
-            其中 Git 用于版本管理与代码推送，Python 用于通过 <code>http.server</code> 快速预览静态站点，
-            Node.js 作为常见前端环境保留，便于后续继续扩展自动化构建或静态站点生成能力。
+            Git 用于版本管理和推送代码，Python 用于本地启动静态服务预览页面，
+            Node.js 作为前端常用环境保留，便于后续继续扩展。
           </p>
         </section>
 
         <section class="section-block">
-          <h2>三、方案选择、适用范围与局限</h2>
+          <h2>三、实现过程</h2>
           <p>
-            本实验采用纯静态 HTML + CSS 方案，不依赖数据库、服务端框架或额外构建链。
-            其核心思路是把首页和文章页直接放在仓库根目录与 <code>posts/</code> 目录中，
-            使默认分支中的文件能够被 GitHub Pages 直接托管。
+            整个博客采用纯静态 HTML + CSS 实现。首页只保留个人简介和实验报告入口，
+            报告页单独放在 <code>posts/</code> 目录下，以便形成清晰的结构。
           </p>
           <ul class="feature-list">
-            <li>适用范围：课程实验、个人主页、作品集、轻量博客等内容更新频率不高的站点。</li>
-            <li>基本假设：仓库名与 GitHub 用户名同名，默认分支为 <code>main</code>，并具备正常推送权限。</li>
-            <li>主要局限：文章新增需要手动维护页面，不具备评论、搜索和后台管理功能。</li>
+            <li>在仓库根目录创建 <code>index.html</code> 作为主页。</li>
+            <li>在 <code>posts/lab2-report.html</code> 中编写实验报告内容。</li>
+            <li>使用统一样式文件 <code>styles.css</code> 完成页面排版和响应式适配。</li>
+            <li>通过 GitHub Pages 发布默认分支中的站点内容。</li>
           </ul>
-        </section>
-
-        <section class="section-block">
-          <h2>四、站点结构设计</h2>
-          <p>为了让博客可以直接发布，本次采用如下目录结构：</p>
-          <pre><code>linzy1011.github.io/
-├─ index.html
-├─ styles.css
-├─ README.md
-├─ .nojekyll
-└─ posts/
-   └─ lab2-report.html</code></pre>
           <p>
-            其中 <code>index.html</code> 作为博客首页，负责展示站点介绍与文章入口；
-            <code>posts/lab2-report.html</code> 作为实验报告博文；
-            <code>styles.css</code> 提供统一视觉风格和响应式布局；
-            <code>.nojekyll</code> 用于确保 Pages 以静态文件方式处理站点内容。
+            这种方案的优点是结构简单、部署直接，但局限也很明显：
+            如果后续文章变多，就需要手动维护更多页面。
           </p>
         </section>
 
         <section class="section-block">
-          <h2>五、实现过程</h2>
-          <ul class="feature-list">
-            <li>在仓库根目录新建首页，设计站点介绍、实验概览、发布步骤和文章入口。</li>
-            <li>将实验报告整理为一篇独立文章，放置在 <code>posts/lab2-report.html</code> 中。</li>
-            <li>使用统一 CSS 变量和响应式布局，保证桌面端与移动端浏览体验一致。</li>
-            <li>补充 README，说明本地预览、推送发布和 GitHub Pages 注意事项。</li>
-          </ul>
-          <p>
-            这种实现方式遵循“小步可审查”的原则：页面职责明确，文件数量少，后续继续添加文章时，
-            只需要在 <code>posts/</code> 目录增加新页面并在首页补上入口即可。
-          </p>
-        </section>
-
-        <section class="section-block">
-          <h2>六、本地验证</h2>
+          <h2>四、本地验证与发布</h2>
           <p>本地预览采用 Python 内置 HTTP 服务，命令如下：</p>
           <pre><code>python -m http.server 8080</code></pre>
-          <p>验证重点包括：</p>
-          <ul class="feature-list">
-            <li>首页是否能够正常打开，导航链接是否可达。</li>
-            <li>实验报告页面是否可以从首页跳转进入。</li>
-            <li>样式是否在桌面端与窄屏设备下保持可读性。</li>
-          </ul>
-        </section>
-
-        <section class="section-block">
-          <h2>七、GitHub Pages 发布流程</h2>
           <p>
-            由于仓库名已经是 <code>linzy1011.github.io</code>，它天然对应 GitHub Pages 用户主页仓库。
-            因此只需将站点文件提交到默认分支，即可使用 GitHub Pages 提供的静态托管能力。
+            启动后可以在浏览器中检查首页和实验报告页是否都能正常访问。
+            确认无误后，将文件推送到仓库默认分支即可完成 GitHub Pages 发布。
           </p>
           <pre><code>git add index.html styles.css posts/lab2-report.html README.md .nojekyll
 git commit -m "feat: launch personal blog on GitHub Pages"
 git push origin main</code></pre>
-          <p>
-            推送完成后，通常可以直接通过 <code>https://linzy1011.github.io/</code> 访问站点。
-            若仓库没有自动发布，可在仓库的 <code>Settings -&gt; Pages</code> 中确认发布源指向默认分支根目录。
-          </p>
         </section>
 
         <section class="section-block">
-          <h2>八、结果验证与合理性检查</h2>
-          <p>完成部署后，应当至少检查以下结果是否成立：</p>
-          <ul class="feature-list">
-            <li>主页地址可以打开，并显示博客首页内容。</li>
-            <li>点击“实验报告”后，能够进入本篇博文。</li>
-            <li>文章内容与实验要求一致，确实描述了环境构建、站点搭建和发布过程。</li>
-            <li>页面在手机宽度下未出现明显布局错乱。</li>
-          </ul>
+          <h2>五、实验结果与总结</h2>
           <p>
-            从工程直觉上看，静态站点文件越少、层级越浅，GitHub Pages 的发布链路越稳定；
-            本次方案符合这一点，因此适合作为实验作业的实现基础。
-          </p>
-        </section>
-
-        <section class="section-block">
-          <h2>九、总结与后续改进</h2>
-          <p>
-            本实验完成了从环境确认、站点搭建、本地验证到 GitHub Pages 发布准备的完整闭环，
-            并将实验报告本身作为博文发布到了博客中。该方案实现成本低、可复现性强，
-            非常适合作为个人博客的第一版。
+            本实验完成了个人博客主页搭建，并成功将实验报告发布为博客文章。
+            最终站点内容保持简洁，只保留主页简介和实验报告，满足实验要求，也便于后续继续维护。
           </p>
           <p>
-            后续如果需要继续完善，可以引入 Markdown 自动生成文章、标签分类、归档页面或自定义域名，
-            逐步把课程实验博客演进为长期维护的个人技术网站。
+            这一方案适合课程实验和个人主页场景；如果后续内容增多，可以再考虑引入更系统的博客框架。
           </p>
         </section>
       </article>

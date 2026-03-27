@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="LinZY1011 的个人博客首页，记录云计算课程实验与个人技术笔记。">
+  <meta name="description" content="LinZY1011 的个人博客首页，当前收录实验报告与简短站点介绍。">
   <meta name="theme-color" content="#163b47">
   <title>LinZY1011 | GitHub Pages 个人博客</title>
   <link rel="stylesheet" href="./styles.css">
@@ -25,111 +25,32 @@
 
     <main class="main-stack">
       <section class="hero panel reveal">
-        <p class="eyebrow">山东大学 · 云计算技术实验 · 2026-03-27</p>
-        <h1>把课程实验真正部署成一个可公开访问的个人博客</h1>
+        <p class="eyebrow">LinZY1011 · GitHub Pages · 个人主页</p>
+        <h1>一个简洁的个人博客主页</h1>
         <p class="hero-copy">
-          这个站点直接托管在 GitHub Pages，使用纯静态 HTML + CSS 实现。首页负责展示博客入口与实验概览，
-          实验报告则被整理为第一篇正式博文，满足“完成网站搭建并发布报告”的实验要求。
+          这个站点托管在 GitHub Pages，当前只保留一段简短主页介绍和一篇实验报告。
+          后续如果需要，我会继续把课程作业、学习记录和项目总结整理到这里。
         </p>
         <div class="hero-actions">
           <a class="button primary" href="./posts/lab2-report.html">阅读实验报告</a>
-          <a class="button ghost" href="https://linzy1011.github.io/" target="_blank" rel="noreferrer">访问线上地址</a>
+          <a class="button ghost" href="https://github.com/LinZY1011/linzy1011.github.io" target="_blank" rel="noreferrer">查看仓库</a>
         </div>
       </section>
 
-      <section class="metrics reveal" aria-label="站点摘要">
-        <article class="metric panel">
-          <span class="metric-label">部署平台</span>
-          <strong>GitHub Pages</strong>
-          <p>基于 <code>linzy1011.github.io</code> 仓库根目录直接发布。</p>
-        </article>
-        <article class="metric panel">
-          <span class="metric-label">技术栈</span>
-          <strong>HTML + CSS</strong>
-          <p>零后端、零数据库，便于课程实验快速完成与复现。</p>
-        </article>
-        <article class="metric panel">
-          <span class="metric-label">首篇文章</span>
-          <strong>实验报告</strong>
-          <p>报告已经转成独立博文，可通过链接在线阅读。</p>
-        </article>
-      </section>
-
-      <section class="section-grid">
-        <section class="panel reveal">
-          <p class="eyebrow">博客定位</p>
-          <h2>从实验交付起步，逐步沉淀个人内容</h2>
-          <p>
-            站点当前聚焦课程实验与技术记录，后续可以继续扩展学习笔记、项目复盘和作品展示。
-            由于采用静态发布方式，维护成本低，适合作为个人长期使用的基础博客。
-          </p>
-          <ul class="feature-list">
-            <li>仓库根目录直接部署，路径简单，推送后即可发布。</li>
-            <li>页面结构清晰，后续新增文章时只需补充 <code>posts/</code> 页面。</li>
-            <li>响应式布局兼容桌面端与移动端浏览。</li>
-          </ul>
-        </section>
-
-        <section class="panel reveal">
-          <p class="eyebrow">实验完成内容</p>
-          <h2>本次提交覆盖了从环境准备到发布验证的完整链路</h2>
-          <div class="timeline">
-            <div class="timeline-item">
-              <strong>环境确认</strong>
-              <p>核对 Git、Python 和 Node 版本，保证本地预览与发布流程可执行。</p>
-            </div>
-            <div class="timeline-item">
-              <strong>博客搭建</strong>
-              <p>在仓库根目录完成首页、文章页和统一样式，实现真正可访问的个人博客入口。</p>
-            </div>
-            <div class="timeline-item">
-              <strong>报告发布</strong>
-              <p>将实验内容整理成 HTML 博文，作为博客的第一篇文章发布。</p>
-            </div>
-            <div class="timeline-item">
-              <strong>部署准备</strong>
-              <p>补充 README 和 <code>.nojekyll</code>，使仓库更贴近 GitHub Pages 的直接发布方式。</p>
-            </div>
-          </div>
-        </section>
-      </section>
-
-      <section class="section-grid">
-        <article class="panel post-card reveal">
-          <p class="eyebrow">最新博文</p>
-          <h2>实验二：基于 GitHub Pages 的个人博客搭建与报告发布</h2>
-          <p class="post-meta">发布于 2026-03-27 · 作者 LinZY1011</p>
-          <p>
-            这篇文章完整记录了实验目标、环境构建、站点结构设计、本地验证、GitHub Pages 发布过程以及结果分析，
-            同时说明了方案的适用范围与局限性。
-          </p>
-          <a class="button primary" href="./posts/lab2-report.html">阅读全文</a>
-        </article>
-
-        <section class="panel reveal">
-          <p class="eyebrow">本地预览</p>
-          <h2>最快的验证方式</h2>
-          <p>在仓库根目录执行下面的命令，即可按最终部署目录结构预览页面。</p>
-          <pre><code>python -m http.server 8080</code></pre>
-          <p>浏览器访问 <code>http://localhost:8080/</code>，确认首页和文章页都能打开。</p>
-        </section>
-      </section>
-
-      <section class="panel reveal">
-        <p class="eyebrow">发布路径</p>
-        <h2>推送到默认分支后即可作为主页仓库发布</h2>
+      <article class="panel post-card reveal">
+        <p class="eyebrow">唯一文章</p>
+        <h2>实验二：基于 GitHub Pages 的个人博客搭建</h2>
+        <p class="post-meta">2026-03-27 · 实验报告</p>
         <p>
-          当前仓库名为 <code>linzy1011.github.io</code>，因此它对应 GitHub Pages 用户主页地址。
-          将站点文件保存在默认分支根目录，有利于降低部署复杂度。
+          这篇文章简要记录了环境准备、页面搭建和 GitHub Pages 发布过程，
+          也是当前博客中保留的第一篇内容。
         </p>
-        <pre><code>git add index.html styles.css posts/lab2-report.html README.md .nojekyll
-git commit -m "feat: launch personal blog on GitHub Pages"
-git push origin main</code></pre>
-      </section>
+        <a class="button primary" href="./posts/lab2-report.html">阅读全文</a>
+      </article>
     </main>
 
     <footer class="site-footer">
-      <p>LinZY1011 · GitHub Pages 静态博客 · 首篇实验报告已发布</p>
+      <p>LinZY1011 · 一个只保留简介和实验报告的简洁博客</p>
     </footer>
   </div>
 </body>
