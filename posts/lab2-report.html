@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="实验二报告：基于 GitHub Pages 搭建个人博客并发布实验报告。">
+  <meta name="description" content="实验二报告：基于 Nginx 在云服务器上部署个人博客并发布实验报告。">
   <meta name="theme-color" content="#163b47">
-  <title>实验二报告 | 基于 GitHub Pages 的个人博客搭建</title>
+  <title>实验二报告 | 基于 Nginx 的云服务器博客部署</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -27,10 +27,10 @@
       <article class="article panel reveal">
         <header class="article-header">
           <p class="eyebrow">课程实验报告</p>
-          <h1>实验二：基于 GitHub Pages 的个人博客搭建与报告发布</h1>
+          <h1>实验二：基于 Nginx 的云服务器博客部署与报告发布</h1>
           <p class="article-lead">
-            本实验使用 <code>linzy1011.github.io</code> 仓库搭建一个简洁的个人博客，
-            并把实验报告整理成站点中的一篇文章进行发布。
+            本实验使用静态 HTML + CSS 构建个人博客，并通过 Nginx 部署到云服务器，
+            最终将实验报告整理成站点中的一篇文章进行发布。
           </p>
         </header>
 
@@ -40,8 +40,8 @@
             <strong>LinZY1011</strong>
           </div>
           <div class="meta-card">
-            <span class="meta-label">仓库</span>
-            <strong><code>linzy1011.github.io</code></strong>
+            <span class="meta-label">部署方式</span>
+            <strong><code>Nginx + 云服务器</code></strong>
           </div>
           <div class="meta-card">
             <span class="meta-label">实验日期</span>
@@ -49,7 +49,7 @@
           </div>
           <div class="meta-card">
             <span class="meta-label">目标地址</span>
-            <strong><code>https://linzy1011.github.io/</code></strong>
+            <strong><code>http://云服务器公网IP/</code></strong>
           </div>
         </section>
 
@@ -57,7 +57,7 @@
           <h2>一、实验目标</h2>
           <p>
             完成个人博客主页的搭建，并将实验报告作为一篇博文发布到站点中。
-            本次选择 GitHub Pages 作为托管平台，原因是部署简单、适合静态页面，也方便课程实验快速完成。
+            本次选择 Nginx 部署到云服务器，原因是配置直接、适合静态页面，也方便通过公网访问实验结果。
           </p>
         </section>
 
@@ -68,10 +68,11 @@
             <li>Git：<code>2.44.0.windows.1</code></li>
             <li>Python：<code>3.12.4</code></li>
             <li>Node.js：<code>v20.11.1</code></li>
+            <li>Nginx：部署在 Ubuntu 云服务器上，用于托管静态站点。</li>
           </ul>
           <p>
             Git 用于版本管理和推送代码，Python 用于本地启动静态服务预览页面，
-            Node.js 作为前端常用环境保留，便于后续继续扩展。
+            Node.js 作为前端常用环境保留，Nginx 用于将站点发布到云服务器并提供公网访问。
           </p>
         </section>
 
@@ -79,17 +80,17 @@
           <h2>三、实现过程</h2>
           <p>
             整个博客采用纯静态 HTML + CSS 实现。首页只保留个人简介和实验报告入口，
-            报告页单独放在 <code>posts/</code> 目录下，以便形成清晰的结构。
+            报告页单独放在 <code>posts/</code> 目录下，以便形成清晰的结构，随后再交给 Nginx 统一托管。
           </p>
           <ul class="feature-list">
             <li>在仓库根目录创建 <code>index.html</code> 作为主页。</li>
             <li>在 <code>posts/lab2-report.html</code> 中编写实验报告内容。</li>
             <li>使用统一样式文件 <code>styles.css</code> 完成页面排版和响应式适配。</li>
-            <li>通过 GitHub Pages 发布默认分支中的站点内容。</li>
+            <li>将站点文件复制到云服务器目录，并通过 Nginx 配置静态站点。</li>
           </ul>
           <p>
             这种方案的优点是结构简单、部署直接，但局限也很明显：
-            如果后续文章变多，就需要手动维护更多页面。
+            如果后续文章变多，就需要手动维护更多页面，并自行管理服务器环境。
           </p>
         </section>
 
@@ -99,21 +100,21 @@
           <pre><code>python -m http.server 8080</code></pre>
           <p>
             启动后可以在浏览器中检查首页和实验报告页是否都能正常访问。
-            确认无误后，将文件推送到仓库默认分支即可完成 GitHub Pages 发布。
+            确认无误后，将站点文件复制到云服务器目录，并由 Nginx 对外提供访问。
           </p>
-          <pre><code>git add index.html styles.css posts/lab2-report.html README.md .nojekyll
-git commit -m "feat: launch personal blog on GitHub Pages"
-git push origin main</code></pre>
+          <pre><code>sudo mkdir -p /var/www/linzy1011.github.io
+sudo cp -r index.html styles.css posts .nojekyll /var/www/linzy1011.github.io/
+sudo systemctl reload nginx</code></pre>
         </section>
 
         <section class="section-block">
           <h2>五、实验结果与总结</h2>
           <p>
             本实验完成了个人博客主页搭建，并成功将实验报告发布为博客文章。
-            最终站点内容保持简洁，只保留主页简介和实验报告，满足实验要求，也便于后续继续维护。
+            最终站点内容保持简洁，只保留主页简介和实验报告，并通过 Nginx 部署到云服务器，满足实验要求。
           </p>
           <p>
-            这一方案适合课程实验和个人主页场景；如果后续内容增多，可以再考虑引入更系统的博客框架。
+            这一方案适合课程实验和个人主页场景；如果后续内容增多，可以再考虑引入更系统的博客框架或进一步完善服务器配置。
           </p>
         </section>
       </article>
